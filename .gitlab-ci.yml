@@ -1,0 +1,34 @@
+# Select image from https://hub.docker.com/_/php/
+image: php:7.4
+
+# Select what we should cache
+cache:
+  paths:
+  - vendor/
+
+before_script:
+# Install git, the php image doesn't have installed
+- apt-get update -yqq
+- apt-get install git -yqq
+
+
+# Install composer
+- curl -sS https://getcomposer.org/installer | php
+
+# Install all project dependencies
+- php composer.phar install
+
+test:app:
+  script:
+    - phpunit
+
+
+# We test PHP5
+test:php5:
+  image: php:5
+
+
+  
+  script:
+  - vendor/bin/phpunit  --coverage-text
+  allow_failure: true
