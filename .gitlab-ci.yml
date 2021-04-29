@@ -1,3 +1,6 @@
+
+
+
 # Select image from https://hub.docker.com/_/php/
 image: php:7.4
 
@@ -10,6 +13,8 @@ before_script:
   # Install git, the php image doesn't have installed
   - apt-get update -yqq
   - apt-get install git -yqq
+  - curl --location --output /usr/local/bin/phpunit "https://phar.phpunit.de/phpunit.phar"
+  - chmod +x /usr/local/bin/phpunit
 
 
   # Install composer
