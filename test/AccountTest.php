@@ -1,15 +1,16 @@
 <?php
 
-require_once("../Account.php");
+
+use demo\Account;
+use demo\BadEmailAdress;
+use demo\TooShortPassword;
 use PHPUnit\Framework\TestCase;
+
 
 class AccountTest extends TestCase
 {
 
 
-    /**
-     * @depends testConstruct
-     */
     public function testGetName()
     {
         $account = new Account('Deboix', "Théo", "theo@gmail.com", "abcde123456");
@@ -24,11 +25,6 @@ class AccountTest extends TestCase
     }
 
 
-    public function testConstruct()
-    {
-        $this->expectException(ArgumentCountError::class);
-        $account = new Account();
-    }
 
 
 

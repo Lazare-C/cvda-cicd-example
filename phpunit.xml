@@ -2,8 +2,8 @@
 
 <phpunit>
     <testsuites>
-        <testsuite name="Example test">
-            <directory>./test/</directory>
+        <testsuite name="Account test">
+            <directory>./test</directory>
         </testsuite>
     </testsuites>
 </phpunit>

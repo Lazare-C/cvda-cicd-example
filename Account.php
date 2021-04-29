@@ -1,8 +1,12 @@
 <?php
 
 
-class TooShortPassword extends Exception { }
-class BadEmailAdress extends Exception { }
+namespace demo;
+class TooShortPassword extends \Exception { }
+
+class BadEmailAdress extends \Exception { }
+
+
 
 class Account
 {
@@ -104,7 +108,7 @@ class Account
     public function setpassword(string $password): void
     {
         if(strlen($password) <=3){
-            throw new TooShortPassword();
+            throw new TooShortPassword;
         }else{
             $this->password = $password;
         }
