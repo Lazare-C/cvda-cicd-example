@@ -25,4 +25,3 @@ test:7.4:
   image: php:7.4
   script:
     - phpunit --configuration phpunit_myapp.xml
-
