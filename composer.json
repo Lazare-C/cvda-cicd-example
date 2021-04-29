@@ -1,11 +1,15 @@
 {
-  "require" : {
-    "silex/silex": "^2.0.4",
-    "monolog/monolog": "^1.22",
-    "twig/twig": "^2.0",
-    "symfony/twig-bridge": "^3"
-  },
+  "name": "vendor_name/cvda-cicd-example",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "LazareC",
+      "email": "email@example.com"
+    }
+  ],
   "require-dev": {
-    "heroku/heroku-buildpack-php": "*"
+    "phpunit/phpunit": "9"
   }
 }
