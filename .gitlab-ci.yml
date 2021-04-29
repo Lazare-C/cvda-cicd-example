@@ -10,23 +10,19 @@ cache:
     - vendor/
 
 before_script:
-  # Install git, the php image doesn't have installed
-
+  # Install dependencies
   - bash ci/docker_install.sh > /dev/null
 
-
-test:app:
+# We test PHP5.6
+test:5.6:
+  image: php:5.6
   script:
-    - phpunit
-
-
-
-# We test PHP5
-test:php5:
-  image: php:5
-
-
-
-  script:
-    - vendor/bin/phpunit  --coverage-text
+    - phpunit --configuration phpunit_myapp.xml
   allow_failure: true
+
+# We test PHP7.0 (good luck with that)
+test:7.4:
+  image: php:7.4
+  script:
+    - phpunit --configuration phpunit_myapp.xml
+
