@@ -1,0 +1,21 @@
+{
+    "name": "titi/cvda-cicd-example",
+    "type": "project",
+    "description": "demo for cdva",
+    "require-dev": {
+        "phpunit/phpunit": "^9"
+    },
+    "authors": [
+        {
+            "name": "LazareC",
+            "email": "lazare.chevereau@etu.univ-lyon1.fr"
+        }
+    ],
+
+    "autoload": {
+        "psr-4": {"demo\\": "./"}
+
+},
+    "require": {}
+
+}

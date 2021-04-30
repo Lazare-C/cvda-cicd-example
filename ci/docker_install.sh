@@ -5,9 +5,10 @@
 
 set -xe
 
+
 # Install git (the php image doesn't have it) which is required by composer
 apt-get update -yqq
-apt-get install git -yqq
+apt-get install git wget -yqq
 
 # Install phpunit, the tool that we will use for testing
 curl --location --output /usr/local/bin/phpunit "https://phar.phpunit.de/phpunit-9.phar"
