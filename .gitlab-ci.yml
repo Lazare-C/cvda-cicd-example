@@ -1,29 +1,20 @@
-
-# Select image from https://hub.docker.com/_/php/
-image: php:7.4
-
-# Select what we should cache
-cache:
-  paths:
-    - vendor/
-
-before_script:
-  # Install dependencies
-  - bash ci/docker_install.sh > /dev/null
-    # Install composer dependencies
-  - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-  - ls
-  - composer install
-
-# We test PHP5.6
-test:5.6:
-  image: php:5.6
+composer:
+  stage: build
+  image: php:7.4-cli
+  tags:
+    - tag-runner1
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}-composer
+    paths:
+      - vendor/
   script:
-    - phpunit --configuration phpunit.xml
-  allow_failure: true
-
-# We test PHP7.0 (good luck with that)
-test:7.4:
-  image: php:7.4
-  script:
+    - apt-get update && apt-get upgrade -y &&  apt-get install -y git libzip-dev
+    - docker-php-ext-configure zip
+    - docker-php-ext-install zip
+    - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+    - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
     - ./vendor/phpunit/phpunit/phpunit --configuration phpunit.xml
+  artifacts:
+    expire_in: 1 month
+    paths:
+      - vendor/
