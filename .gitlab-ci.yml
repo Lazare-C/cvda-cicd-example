@@ -13,8 +13,17 @@ composer:
     - docker-php-ext-install zip
     - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
     - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
-    - ./vendor/phpunit/phpunit/phpunit --configuration phpunit.xml
   artifacts:
     expire_in: 1 month
     paths:
       - vendor/
+
+
+
+testing:
+  stage: test
+  image: php:7.4-cli
+  tags:
+    - tag-runner1
+  script:
+    - ./vendor/phpunit/phpunit/phpunit --configuration phpunit.xml
