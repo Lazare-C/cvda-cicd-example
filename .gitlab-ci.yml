@@ -1,8 +1,6 @@
 composer:
   stage: build
   image: php:7.4-cli
-  tags:
-    - tag-runner1
   cache:
     key: ${CI_COMMIT_REF_SLUG}-composer
     paths:
@@ -18,12 +16,8 @@ composer:
     paths:
       - vendor/
 
-
-
 testing:
   stage: test
   image: php:7.4-cli
-  tags:
-    - tag-runner1
   script:
     - ./vendor/phpunit/phpunit/phpunit --configuration phpunit.xml
