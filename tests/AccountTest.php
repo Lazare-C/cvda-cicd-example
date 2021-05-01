@@ -11,12 +11,21 @@ class AccountTest extends TestCase
 {
 
 
+    /**
+     * @covers \demo\Account
+     * @covers \demo\Account::getName
+     */
     public function testGetName()
     {
         $account = new Account('Deboix', "Théo", "theo@gmail.com", "abcde123456");
         $this->assertSame("Deboix", $account->getName());
 
     }
+
+    /**
+     * @covers \demo\Account
+     * @covers \demo\Account::getName
+     */
     public function testGetNameNull()
     {
         $account = new Account('', "Théo", "theo@gmail.com", "abcde123456");
@@ -27,7 +36,10 @@ class AccountTest extends TestCase
 
 
 
-
+    /**
+     * @covers \demo\Account
+     * @covers \demo\Account::setpassword
+     */
     public function testSetpasswordTrue()
     {
 
@@ -36,6 +48,11 @@ class AccountTest extends TestCase
 
 
     }
+
+    /**
+     * @covers \demo\Account
+     * @covers \demo\Account::setpassword
+     */
     public function testSetpasswordFalse()
     {
 
@@ -46,6 +63,10 @@ class AccountTest extends TestCase
 
     }
 
+    /**
+     * @covers \demo\Account
+     * @covers \demo\Account::setEmail
+     */
     public function testSetEmail()
     {
         $account = new Account('', "Théo", "theo@gmail.com", "123");
@@ -55,6 +76,10 @@ class AccountTest extends TestCase
 
     }
 
+    /**
+     * @covers \demo\Account
+     * @covers \demo\Account::setEmail
+     */
     public function testSetEmailFail()
     {
         $this->expectException(BadEmailAdress::class);
