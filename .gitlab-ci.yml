@@ -18,6 +18,7 @@ composer:
 
 testing:
   stage: test
+  needs: [composer]
   image: php:7.4-cli
   script:
     - ./vendor/phpunit/phpunit/phpunit --configuration phpunit.xml
