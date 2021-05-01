@@ -16,11 +16,26 @@ composer:
     - docker-php-ext-configure zip
     - docker-php-ext-install zip
     - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+  artifacts:
+    expire_in: 1 month
+    paths:
+      - vendor/
+
+composer-install:
+  stage: build
+  needs: [composer]
+  image: php:7.4-cli
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}-composer
+    paths:
+      - vendor/
+  script:
     - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
   artifacts:
     expire_in: 1 month
     paths:
       - vendor/
+
 
 testing:
   stage: tests
