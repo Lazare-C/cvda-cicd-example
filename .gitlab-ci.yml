@@ -23,7 +23,6 @@ composer:
 
 composer-install:
   stage: build
-  needs: [composer]
   image: php:7.4-cli
   cache:
     key: ${CI_COMMIT_REF_SLUG}-composer
